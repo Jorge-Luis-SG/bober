@@ -2,3 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@import url('../src/assets/fonts/stylesheet.css');
+
+*{
+  font-family: 'Inter';
+  font-weight: 500;
+}

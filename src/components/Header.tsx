@@ -1,25 +1,29 @@
-import logo from '../assets/logo.svg';
+import logo from "../assets/logo.svg";
 
 export default function Header() {
   return (
     <>
-    <header className="flex">
-        <img src={logo} alt="Bober" />
-        <nav className='max-w-xl mx-auto'>
-            <ul className='flex justify-between'>
-                <li>Home</li>
-                <li>Service</li>
-                <li>Feature</li>
-                <li>Product</li>
-                <li>Testimonial</li>
-                <li>FAQ</li>
-            </ul>
-        </nav>
-        <div className="login">
-            <button className='bg-white'>Login</button>
-            <button className='bg-[#FFA600]'>Sign up</button>
+      <header className="flex py-5 bg-[#F5F7FA] pr-20 pl-4">
+        <div className="flex justify-start">
+          <img src={logo} alt="Bober" />
         </div>
-    </header>
+        <nav className="max-w-xl mx-auto flex items-center ">
+          <ul className="flex justify-between items-center space-x-12">
+            <li>Home</li>
+            <li>Service</li>
+            <li>Feature</li>
+            <li>Product</li>
+            <li>Testimonial</li>
+            <li>FAQ</li>
+          </ul>
+        </nav>
+        <div className="login flex">
+          <button className="bg-transparent text-[#FFA600] mr- w-20">
+            Login
+          </button>
+          <button className="bg-[#FFA600] text-white w-20">Sign up</button>
+        </div>
+      </header>
     </>
-  )
+  );
 }

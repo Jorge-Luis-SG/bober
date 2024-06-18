@@ -1,15 +1,15 @@
-import './App.css'
-import Header from './components/Header';
+import "./App.css";
+import Header from "./components/Header";
+
+import Home from "./components/Home";
 
 function App() {
-
-
   return (
     <>
-      <Header/>
-      <h1 className='bg-black'>hasd</h1>
+      <Header />
+      <Home />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
