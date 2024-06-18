@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Header/>
-  
+      <h1 className='bg-black'>hasd</h1>
     </>
   )
 }
