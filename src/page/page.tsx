@@ -4,7 +4,7 @@ import Respaldado from "../components/Respaldado";
 
 
 export default function Page() {
-  return (
+  return ( 
     <main>
         <Home/>
         <Respaldado/>
