@@ -3,8 +3,6 @@
 @tailwind utilities;
 
 
-@import url('./assets/fonts/../src/assets/fonts/stylesheet.css');
-
 *{
   font-family: 'Inter';
   font-weight: 500;
