@@ -1,6 +1,6 @@
 import image from "../assets/home.png";
 
-export default function Home() {
+export function Home() {
   return (
     <>
       <div className="bg-[#F5F7FA] h-[calc(100vh_-_80px)] flex justify-center items-center">

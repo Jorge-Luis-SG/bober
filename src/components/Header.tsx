@@ -30,7 +30,7 @@ export const NavMenu = () => {
   );
 };
 
-export default function Header() {
+export function Header() {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   return (
     <>

@@ -6,7 +6,7 @@ import img4 from '../assets/respaldado/uanl.png';
 const images = [img1, img2, img3, img4];
 
 
-export default function Respaldado() {
+export function Respaldado() {
   return (
     <>
       <div className='mt-12 z-10'>

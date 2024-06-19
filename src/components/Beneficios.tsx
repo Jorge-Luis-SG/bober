@@ -47,7 +47,7 @@ const data: Data[] = [
   },
 ];
 
-export default function Beneficios() {
+export function Beneficios() {
   return (
     <>
       <div className="mt-20">
