@@ -1,5 +1,5 @@
 import Header from "./components/Header";
-import Page from "./page/Page";
+import Page from "./page/Page.tsx";
 
 
 
