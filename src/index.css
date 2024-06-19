@@ -8,4 +8,18 @@
 *{
   font-family: 'Inter';
   font-weight: 500;
+  color: #4D4D4D;
+}
+
+.border-beneficios{
+  border-radius: 1rem .5rem 1rem .5rem;
+  -webkit-border-radius: 1rem .5rem 1rem .5rem;
+  -moz-border-radius: 1rem .5rem 1rem .5rem;
+  -ms-border-radius: 1rem .5rem 1rem .5rem;
+  -o-border-radius: 1rem .5rem 1rem .5rem;
+}
+
+.border-beneficios svg{
+  width: 75%;
+  height: 75%;
 }
