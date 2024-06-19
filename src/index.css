@@ -2,3 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
+
+*{
+  font-family: 'Inter';
+  font-weight: 500;
+  color: #4D4D4D;
+}
+
+html,body{
+  background-color: white;
+}
+
+.border-beneficios{
+  border-radius: 1rem .5rem 1rem .5rem;
+  -webkit-border-radius: 1rem .5rem 1rem .5rem;
+  -moz-border-radius: 1rem .5rem 1rem .5rem;
+  -ms-border-radius: 1rem .5rem 1rem .5rem;
+  -o-border-radius: 1rem .5rem 1rem .5rem;
+}
+
+.border-beneficios svg{
+  width: 75%;
+  height: 75%;
+}
+
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./assets/fonts/Inter-SemiBold.eot');
+  src: local('Inter SemiBold'), local('Inter-SemiBold'),
+      url('./assets/fonts/') format('embedded-opentype'),
+      url('./assets/fonts/Inter-SemiBold.woff2') format('woff2'),
+      url('./assets/fonts/Inter-SemiBold.woff') format('woff'),
+      url('./assets/fonts/Inter-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./assets/fonts/Inter-Medium.eot');
+  src: local('Inter Medium'), local('Inter-Medium'),
+      url('./assets/fonts/Inter-Medium.eot?#iefix') format('embedded-opentype'),
+      url('./assets/fonts/Inter-Medium.woff2') format('woff2'),
+      url('./assets/fonts/Inter-Medium.woff') format('woff'),
+      url('./assets/fonts/Inter-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('./assets/fonts/Inter-Bold.eot');
+  src: local('Inter Bold'), local('Inter-Bold'),
+      url('./assets/fonts/Inter-Bold.eot?#iefix') format('embedded-opentype'),
+      url('./assets/fonts/Inter-Bold.woff2') format('woff2'),
+      url('./assets/fonts/Inter-Bold.woff') format('woff'),
+      url('./assets/fonts/Inter-Bold.ttf') format('truetype'),
+      url('./assets/fonts/Inter-Bold.svg#Inter-Bold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+
