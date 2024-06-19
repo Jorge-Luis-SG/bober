@@ -1,13 +1,16 @@
+import Beneficios from "./components/Beneficios";
 import Header from "./components/Header";
-import Page from "./page/Page.tsx";
+import Home from "./components/Home";
 
-
+import Respaldado from "./components/Respaldado";
 
 function App() {
   return (
     <>
       <Header />
-      <Page />
+      <Home />
+      <Respaldado />
+      <Beneficios />
     </>
   );
 }
