@@ -9,6 +9,10 @@
   color: #4D4D4D;
 }
 
+html,body{
+  background-color: white;
+}
+
 .border-beneficios{
   border-radius: 1rem .5rem 1rem .5rem;
   -webkit-border-radius: 1rem .5rem 1rem .5rem;
