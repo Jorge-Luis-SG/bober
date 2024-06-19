@@ -2,7 +2,7 @@ import howItWorks from '../assets/mobile-login/rafiki.svg'
 
 export function HowItWorks() {
   return (
-    <section className="flex sm:flex-row flex-col px-5 py-14 sm:space-x-16 sm:space-y-0 space-y-4 items-center">
+    <section className="flex lg:flex-row flex-col max-w-6xl m-auto px-5 py-14 lg:space-x-16 lg:space-y-0 space-y-4 items-center">
         <img src={howItWorks} alt="Bober" />
         <div className='space-y-4'>
             <h2 className='text-[#4D4D4D] text-4xl font-semibold'>¿Cómo Funciona Bober para Mejorar tu Preparación Técnica?</h2>

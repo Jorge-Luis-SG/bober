@@ -12,6 +12,7 @@ function App() {
   return (
     <>
       <Header/>
+      <Home />
       <Respaldado />
       <Beneficios />
       <HowItWorks />
@@ -19,7 +20,6 @@ function App() {
       <DesignFooter />
       <Newsletter />
       <Footer />
-      <Home />
     </>
   );
 }

@@ -83,43 +83,45 @@ export function Footer() {
     ]
 
   return (
-    <section className="flex justify-between px-5 py-14 bg-[#001441]">
-        <div className='space-y-10'>
-            <img src={LogoWhite} alt="Logo white" />
-            <div>
-                <p className='text-white'>Copyright © 2024 Bober.</p>
-                <p className='text-white'>Derechos reservados</p>
+    <section className="bg-[#001441]">
+        <div className='flex flex-wrap gap-20 justify-between px-5 py-14 max-w-6xl m-auto'>
+            <div className='space-y-10'>
+                <img src={LogoWhite} alt="Logo white" />
+                <div>
+                    <p className='text-white'>Copyright © 2024 Bober.</p>
+                    <p className='text-white'>Derechos reservados</p>
+                </div>
+                <div className='flex space-x-4'>
+                    {icons.map((item) => {
+                        return (
+                            <a className='flex justify-center items-center bg-white/10 p-2 rounded-full' href="#" rel="noopener noreferrer">
+                                <img width={15} src={item.icon} alt="" />
+                            </a>
+                        )
+                    })}
+                </div>
             </div>
-            <div className='flex space-x-4'>
-                {icons.map((item) => {
+            <div className='flex flex-wrap gap-20 sm:space-x-7'>
+                {links.map((item) => {
                     return (
-                        <a className='flex justify-center items-center bg-white/10 p-2 rounded-full' href="#" rel="noopener noreferrer">
-                            <img width={15} src={item.icon} alt="" />
-                        </a>
+                        <div className='space-y-6 pr-20'>
+                            <h2 className='text-white text-xl font-semibold'>{item.title}</h2>
+                            <ul className='space-y-3'>
+                                {item.sublinks.map((item) => {
+                                    return (
+
+                                        <li className='text-[#F5F7FA] text-sm font-normal'>
+                                            <a href={item.link}>
+                                                {item.title}
+                                            </a>
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                        </div>
                     )
                 })}
             </div>
-        </div>
-        <div className='flex space-x-7'>
-            {links.map((item) => {
-                return (
-                    <div className='space-y-6 pr-20'>
-                        <h2 className='text-white text-xl font-semibold'>{item.title}</h2>
-                        <ul className='space-y-3'>
-                            {item.sublinks.map((item) => {
-                                return (
-
-                                    <li className='text-[#F5F7FA] text-sm font-normal'>
-                                        <a href={item.link}>
-                                            {item.title}
-                                        </a>
-                                    </li>
-                                )
-                            })}
-                        </ul>
-                    </div>
-                )
-            })}
         </div>
     </section>
   )
