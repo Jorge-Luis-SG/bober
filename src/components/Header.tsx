@@ -3,6 +3,7 @@ import { MdClose } from "react-icons/md";
 
 import logo from "../assets/logo.svg";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const NavMenu = () => {
   return (
@@ -19,9 +20,7 @@ export const NavMenu = () => {
         <li>FAQ</li>
       </ul>
       <div className="login flex lg:hidden mt-8 space-x-4">
-        <button className="bg-transparent text-[#FFA600] w-24 h-11 text-lg">
-          Login
-        </button>
+        <Link to={'login'} className="bg-transparent flex items-center justify-center text-[#FFA600] w-24 h-11 text-lg">Login</Link>
         <button className="bg-[#FFA600] text-white py-2 w-24 h-11 text-lg">
           Sign up
         </button>
@@ -59,10 +58,10 @@ export function Header() {
             <div className="lg:hidden">{menuIsOpen ? <NavMenu /> : <></>}</div>
           </nav>
           <div className="login hidden lg:flex lg:items-center">
-            <button className="bg-transparent text-[#FFA600] w-24 h-11">
+            <Link to={'/login'} className="bg-transparent flex items-center justify-center text-[#FFA600] w-24 h-11">
               Login
-            </button>
-            <button className="bg-[#FFA600] text-white w-24 h-11">Sign up</button>
+            </Link>
+            <Link to={'/register'} className="bg-[#FFA600] flex items-center justify-center text-white w-24 h-11">Sign up</Link>
           </div>
         </div>
       </header>

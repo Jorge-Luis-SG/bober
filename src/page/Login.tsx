@@ -1,38 +1,23 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import { useEffect } from "react";
 
 export default function Login() {
 
-    const [formData, setFormData] = useState({
-        email: '',
-        password: ''
-    })
+  const { register, handleSubmit, formState: { errors } } = useForm()
 
-    console.log(formData)
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData((prev) => {
-         return {
-             ...prev,
-             [e.target.name]: e.target.value
-         }
-        })
-    }
+  const { signIn, isAuthenticated } = useAuth()
 
-    const handleSubmit = async () => {
-        const response = await fetch('http://localhost:3000/api/login', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(formData)
-        })
-        if(response.status === 200) return location.assign('/dashboard')
-            
-        const result = await response.json()
+  const navigate = useNavigate()
 
+  useEffect(() => {
+    if(isAuthenticated) navigate('/dashboard')
+  }, [isAuthenticated, navigate])
 
-        console.log(result)
-    }
+  const onSubmit = handleSubmit(async (values) => {
+    signIn(values)
+  })
 
   return (
     <div className="font-[sans-serif]">
@@ -41,7 +26,9 @@ export default function Login() {
           <img src="https://readymadeui.com/image-3.webp" className="w-full h-full object-cover" alt="login-image" />
         </div>
 
-        <form onSubmit={(e) => {e.preventDefault();handleSubmit()}} className="max-w-xl w-full p-6 mx-auto">
+        <form 
+            onSubmit={onSubmit}
+            className="max-w-xl w-full p-6 mx-auto">
           <div className="mb-12">
             <h3 className="text-gray-800 text-4xl font-extrabold">Sign in</h3>
             <p className="text-gray-800 text-sm mt-6">Don't have an account <Link to="/register" className="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap">Register here</Link></p>
@@ -50,7 +37,12 @@ export default function Login() {
           <div>
             <label className="text-gray-800 text-sm block mb-2">Email</label>
             <div className="relative flex items-center">
-              <input name="email" type="text" required className="w-full text-sm text-gray-800 border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none" placeholder="Enter email" value={formData.email} onChange={handleChange}/>
+              <input
+                type="email"
+                className="w-full text-sm text-gray-800 border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none"
+                placeholder="Enter email"
+                {...register('email', { required: true })}
+              />
               <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" className="w-[18px] h-[18px] absolute right-2" viewBox="0 0 682.667 682.667">
                 <defs>
                   <clipPath id="a" clipPathUnits="userSpaceOnUse">
@@ -63,21 +55,37 @@ export default function Login() {
                 </g>
               </svg>
             </div>
+            {
+              errors.email && <p className="text-red-500">Email is required</p>
+            }
           </div>
 
           <div className="mt-8">
             <label className="text-gray-800 text-sm block mb-2">Password</label>
             <div className="relative flex items-center">
-              <input name="password" type="password" required className="w-full text-sm text-gray-800 border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none" placeholder="Enter password" value={formData.password} onChange={handleChange}/>
+              <input
+                type="password"
+                className="w-full text-sm text-gray-800 border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none"
+                placeholder="Enter password"
+                { ...register('password', { required: true })}
+              />
               <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" className="w-[18px] h-[18px] absolute right-2 cursor-pointer" viewBox="0 0 128 128">
                 <path d="M64 104C22.127 104 1.367 67.496.504 65.943a4 4 0 0 1 0-3.887C1.367 60.504 22.127 24 64 24s62.633 36.504 63.496 38.057a4 4 0 0 1 0 3.887C126.633 67.496 105.873 104 64 104zM8.707 63.994C13.465 71.205 32.146 96 64 96c31.955 0 50.553-24.775 55.293-31.994C114.535 56.795 95.854 32 64 32 32.045 32 13.447 56.775 8.707 63.994zM64 88c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm0-40c-8.822 0-16 7.178-16 16s7.178 16 16 16 16-7.178 16-16-7.178-16-16-16z" data-original="#000000"></path>
               </svg>
             </div>
+            {
+              errors.password && <p className="text-red-500">Password is required</p>
+            }
           </div>
 
           <div className="flex flex-wrap items-center justify-between gap-4 mt-6">
             <div className="flex items-center">
-              <input id="remember-me" name="remember-me" type="checkbox" className="h-4 w-4 shrink-0 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
+              <input
+                id="remember-me"
+                type="checkbox"
+                className="h-4 w-4 shrink-0 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                { ...register('checkbox', { required: true })}
+              />
               <label htmlFor="remember-me" className="ml-3 block text-sm text-gray-800">
                 Remember me
               </label>
