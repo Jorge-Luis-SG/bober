@@ -3,7 +3,7 @@ import { useAuth } from "./context/AuthContext"
 import Logo from './assets/logo.svg'
 
 export const ProtectedRoute = () => {
-    const { user, loading, isAuthenticated } = useAuth()
+    const { loading, isAuthenticated } = useAuth()
     if(loading) return <>
     
     <div className="flex h-screen justify-center items-center animate-pulse">
