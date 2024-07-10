@@ -5,6 +5,7 @@ import Login from "./page/Login.tsx";
 import { Register } from "./page/Register.tsx";
 import Dashboard from "./page/Dashboard.tsx";
 import { ProtectedRoute } from "./ProtectedRoute.tsx";
+import ECommerce from "./page/E-commerce.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -14,7 +15,16 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <App />,
-      }      
+      },
+      {
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: "dashboard",
+            element: <ECommerce />
+          }
+        ]
+      }
     ],
   },
   {
@@ -24,14 +34,5 @@ export const router = createBrowserRouter([
   {
     path: "register",
     element: <Register />
-  },
-  {
-    element: <ProtectedRoute />,
-    children: [
-      {
-        path: "dashboard",
-        element: <Dashboard />
-      }
-    ]
   }
 ]);
