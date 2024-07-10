@@ -3,7 +3,6 @@ import App from './App.tsx'
 import Root from "./page/Root.tsx";
 import Login from "./page/Login.tsx";
 import { Register } from "./page/Register.tsx";
-import Dashboard from "./page/Dashboard.tsx";
 import { ProtectedRoute } from "./ProtectedRoute.tsx";
 import ECommerce from "./page/E-commerce.tsx";
 
