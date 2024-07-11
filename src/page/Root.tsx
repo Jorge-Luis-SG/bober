@@ -6,7 +6,7 @@ export default function Root() {
   return (
     <>
       <Header />
-      <main>
+      <main className="lg:pt-0 pt-20">
         <Outlet />
       </main>
       <Footer />

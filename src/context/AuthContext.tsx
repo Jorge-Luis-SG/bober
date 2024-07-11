@@ -1,11 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { registerRequest, loginRequest, verifyTokenRequest } from "../api/auth";
+import { registerRequest, loginRequest, verifyTokenRequest, logoutRequest } from "../api/auth";
 import { FieldValues } from "react-hook-form";
 // import Cookies from 'js-cookie'
 
 type AppContextType = {
     signUp: (user: FieldValues) => void;
     signIn: (user: FieldValues) => void;
+    logout: () => void;
     user: null | FieldValues;
     isAuthenticated: boolean;
     errors: any,
@@ -49,6 +50,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode}) => {
             localStorage.setItem('token', res.data.token)
             setUser(res.data.user)
             setIsAuthenticated(true)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const logout = async () => {
+        try {
+            const res = await logoutRequest()
+            console.log(res.data)
+            localStorage.removeItem('token')
+            setUser(null)
+            setIsAuthenticated(false)
         } catch (error) {
             console.log(error)
         }
@@ -104,6 +117,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode}) => {
         <AuthContext.Provider value={{
             signUp,
             signIn,
+            logout,
             user,
             isAuthenticated,
             errors,

@@ -4,8 +4,11 @@ import { MdClose } from "react-icons/md";
 import logo from "../assets/logo.svg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import profile from "../assets/images/user/user-01.png"
 
 export const NavMenu = () => {
+
   return (
     <div>
       <div className="flex items-center justify-start h-20 mb-4 lg:hidden">
@@ -19,12 +22,7 @@ export const NavMenu = () => {
         <li>Testimonial</li>
         <li>FAQ</li>
       </ul>
-      <div className="login flex lg:hidden mt-8 space-x-4">
-        <Link to={'login'} className="bg-transparent flex items-center justify-center text-[#FFA600] w-24 h-11 text-lg">Login</Link>
-        <button className="bg-[#FFA600] text-white py-2 w-24 h-11 text-lg">
-          Sign up
-        </button>
-      </div>
+      <ProfilePic classname="lg:hidden flex justify-center py-10"/>
     </div>
   );
 };
@@ -33,7 +31,7 @@ export function Header() {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   return (
     <>
-      <header className="py-5 bg-[#F5F7FA] pr-20 pl-4">
+      <header className="lg:relative lg:h-30 fixed w-full h-20 z-999999 py-5 bg-[#F5F7FA] pr-20 pl-4">
         <div className={`fixed lg:relative flex justify-between max-w-[1700px] mx-auto w-full left-0 top-0 ${menuIsOpen ? 'bg-[#ffffff90]' : 'bg-transparent'} lg:bg-transparent`}>
           <div className={`flex items-center justify-start h-20 ${menuIsOpen ? 'opacity-0' : 'opacity-100'} lg:opacity-100`}>
             <img src={logo} alt="Bober" />
@@ -57,14 +55,43 @@ export function Header() {
             </div>
             <div className="lg:hidden">{menuIsOpen ? <NavMenu /> : <></>}</div>
           </nav>
-          <div className="login hidden lg:flex lg:items-center">
-            <Link to={'/login'} className="bg-transparent flex items-center justify-center text-[#FFA600] w-24 h-11">
-              Login
-            </Link>
-            <Link to={'/register'} className="bg-[#FFA600] flex items-center justify-center text-white w-24 h-11">Sign up</Link>
-          </div>
+          <ProfilePic classname="hidden lg:flex" />
         </div>
       </header>
     </>
   );
 }
+
+const ProfilePic = ({ classname }: { classname: string }) => {
+
+  const { isAuthenticated, logout } = useAuth()
+  
+
+  return (
+    <div className={`login lg:items-center ${classname}`}>
+      {
+        isAuthenticated ?  
+        <>
+          <button className="">
+            <img
+              className="rounded-full h-16 w-16"
+              src={profile}
+              alt="profile picture" />
+          </button>
+          <button onClick={()=> logout()} className="bg-transparent flex items-center justify-center text-[#FFA600] w-24 h-11">
+            Logout
+          </button>
+        </>
+        :
+
+        <>
+          <Link to={'/login'} className="bg-transparent flex items-center justify-center text-[#FFA600] w-24 h-11">
+            Login
+          </Link>
+          <Link to={'/register'} className="bg-[#FFA600] flex items-center justify-center text-white w-24 h-11">Sign up</Link>
+        </>
+      }
+    </div>
+  )
+}
+
