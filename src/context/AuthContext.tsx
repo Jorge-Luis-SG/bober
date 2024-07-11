@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { registerRequest, loginRequest, verifyTokenRequest } from "../api/auth";
 import { FieldValues } from "react-hook-form";
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 
 type AppContextType = {
     signUp: (user: FieldValues) => void;
