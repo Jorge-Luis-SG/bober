@@ -33,6 +33,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode}) => {
         try {        
             const res = await registerRequest(user)
             console.log(res.data)
+            localStorage.setItem('token', res.data.token)
             setUser(res.data)
             setIsAuthenticated(true) 
         } catch (error: any) {
@@ -45,7 +46,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode}) => {
         try {
             const res = await loginRequest(user)
             console.log(res.data)
-            setUser(res.data)
+            localStorage.setItem('token', res.data.token)
+            setUser(res.data.user)
             setIsAuthenticated(true)
         } catch (error) {
             console.log(error)
@@ -64,15 +66,20 @@ export const AuthProvider = ({ children }: { children: React.ReactNode}) => {
 
     useEffect(() => {
         const checkLogin = async () => {
-            const cookies = Cookies.get()
+            // const cookies = Cookies.get()
+            const token =  localStorage.getItem('token')
+            
 
-            if(!cookies.token) {
+            // if(!cookies.token) {
+            if(!token) {
                 setIsAuthenticated(false)
                 setUser(null)
                 return setLoading(false)
             }
             try {
-                const res = await verifyTokenRequest(cookies.token)
+                // const res = await verifyTokenRequest(cookies.token)
+                console.log(token)
+                const res = await verifyTokenRequest({token})
                 console.log(res.status)
                 if(res.status === 401) {
                     setIsAuthenticated(false);
